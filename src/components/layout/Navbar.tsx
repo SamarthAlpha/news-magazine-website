@@ -129,13 +129,16 @@ export function Navbar() {
                   <AnimatePresence>
                     {item.subItems && activeSubmenu === item.label && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64"
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 z-50"
                       >
-                        <div className="bg-white border border-zinc-100 shadow-xl rounded-xl p-4 overflow-hidden">
+                        {/* Safe bridge to prevent closing when moving mouse */}
+                        <div className="absolute -top-4 left-0 right-0 h-4 bg-transparent" />
+                        
+                        <div className="bg-white border border-zinc-100 shadow-xl rounded-xl p-4 overflow-hidden ring-1 ring-black/5">
                           <div className="flex flex-col space-y-1">
                             {item.subItems.map((subItem) => (
                               <Link
@@ -202,19 +205,19 @@ export function Navbar() {
           <AnimatePresence>
             {isSearchOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="absolute inset-0 bg-white z-40 flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="absolute inset-0 bg-white/98 backdrop-blur-sm z-40 flex items-center justify-center"
               >
-                <form onSubmit={handleSearch} className="w-full max-w-3xl relative flex items-center">
-                  <Search className="w-5 h-5 text-zinc-400 mr-4 flex-shrink-0" />
+                <form onSubmit={handleSearch} className="w-full max-w-3xl relative flex items-center px-6">
+                  <Search className="w-6 h-6 text-zinc-400 mr-4 flex-shrink-0" />
                   <input
                     ref={searchInputRef}
                     type="text"
                     placeholder="Search news, topics, and analysis..."
-                    className="w-full bg-transparent border-none text-xl md:text-2xl font-serif placeholder:text-zinc-300 focus:ring-0 focus:outline-none py-2 text-zinc-900"
+                    className="w-full bg-transparent border-none text-2xl md:text-3xl font-serif placeholder:text-zinc-300 focus:ring-0 focus:outline-none py-2 text-zinc-900"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -223,7 +226,7 @@ export function Navbar() {
                     onClick={() => setIsSearchOpen(false)}
                     className="p-2 hover:bg-zinc-100 rounded-full transition-colors ml-4"
                   >
-                    <X className="w-5 h-5 text-zinc-500" />
+                    <X className="w-6 h-6 text-zinc-500" />
                   </button>
                 </form>
               </motion.div>

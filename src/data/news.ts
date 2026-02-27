@@ -303,5 +303,175 @@ export const ARTICLES: Article[] = [
     image: "https://picsum.photos/seed/biotech/1200/800",
     tags: ["Biotech", "HealthTech", "Innovation"],
     views: 1321
+  },
+  {
+    id: '17',
+    title: "The Ethics of AI Agents: Who is Responsible When Autonomous Bots Fail?",
+    excerpt: "As AI agents begin executing complex tasks and spending money, legal frameworks are struggling to keep up with liability questions.",
+    content: "Full content here...",
+    category: "AI & ML",
+    author: {
+      name: "Marcus Chen",
+      role: "AI Strategy Lead",
+      avatar: "https://picsum.photos/seed/marcus/100/100"
+    },
+    publishedAt: "2026-02-10T09:00:00Z",
+    readTime: "6 min read",
+    image: "https://picsum.photos/seed/ai-ethics/1200/800",
+    tags: ["AI", "Ethics", "Legal"],
+    views: 8921
+  },
+  {
+    id: '18',
+    title: "Multi-Cloud Mastery: Orchestrating AWS, Azure, and GCP",
+    excerpt: "Managing a tri-cloud strategy is complex but necessary for resilience. Here are the tools top CTOs are using.",
+    content: "Full content here...",
+    category: "Cloud",
+    author: {
+      name: "Sarah Jenkins",
+      role: "Cloud Architect",
+      avatar: "https://picsum.photos/seed/sarah/100/100"
+    },
+    publishedAt: "2026-02-09T14:15:00Z",
+    readTime: "7 min read",
+    image: "https://picsum.photos/seed/multicloud/1200/800",
+    tags: ["Cloud", "DevOps", "Infrastructure"],
+    views: 7432
+  },
+  {
+    id: '19',
+    title: "Ransomware 3.0: AI-Powered Attacks on the Rise",
+    excerpt: "Cybercriminals are using LLMs to craft perfect phishing emails and adaptive malware. Your defense needs AI too.",
+    content: "Full content here...",
+    category: "Cybersecurity",
+    author: {
+      name: "Alex V",
+      role: "Security Analyst",
+      avatar: "https://picsum.photos/seed/alex/100/100"
+    },
+    publishedAt: "2026-02-08T11:30:00Z",
+    readTime: "5 min read",
+    image: "https://picsum.photos/seed/ransomware/1200/800",
+    tags: ["Security", "AI", "Cybercrime"],
+    views: 6543
+  },
+  {
+    id: '20',
+    title: "DeFi for Enterprise: Real-World Asset Tokenization",
+    excerpt: "BlackRock and Fidelity are tokenizing billions in assets. Is your treasury ready for blockchain-based liquidity?",
+    content: "Full content here...",
+    category: "Blockchain",
+    author: {
+      name: "David Kim",
+      role: "FinTech Reporter",
+      avatar: "https://picsum.photos/seed/david/100/100"
+    },
+    publishedAt: "2026-02-07T10:00:00Z",
+    readTime: "6 min read",
+    image: "https://picsum.photos/seed/defi/1200/800",
+    tags: ["Blockchain", "FinTech", "DeFi"],
+    views: 5432
+  },
+  {
+    id: '21',
+    title: "LLMs on the Edge: Running 7B Models on Smartphones",
+    excerpt: "Apple and Samsung's latest chips make on-device AI a reality. Privacy and speed are the big winners.",
+    content: "Full content here...",
+    category: "AI & ML",
+    author: {
+      name: "Dr. Elena Rostova",
+      role: "Senior Tech Analyst",
+      avatar: "https://picsum.photos/seed/elena/100/100"
+    },
+    publishedAt: "2026-02-06T13:45:00Z",
+    readTime: "5 min read",
+    image: "https://picsum.photos/seed/edge-ai/1200/800",
+    tags: ["AI", "Mobile", "Hardware"],
+    views: 9123
+  },
+  {
+    id: '22',
+    title: "Serverless 2.0: Wasm and the End of Containers?",
+    excerpt: "WebAssembly is challenging Docker's dominance in the cloud. Why Wasm might be the future of microservices.",
+    content: "Full content here...",
+    category: "Cloud",
+    author: {
+      name: "Sarah Jenkins",
+      role: "Cloud Architect",
+      avatar: "https://picsum.photos/seed/sarah/100/100"
+    },
+    publishedAt: "2026-02-05T09:20:00Z",
+    readTime: "8 min read",
+    image: "https://picsum.photos/seed/wasm/1200/800",
+    tags: ["Cloud", "Wasm", "Serverless"],
+    views: 4321
+  },
+  {
+    id: '23',
+    title: "Quantum Encryption vs. Blockchain: The Countdown Begins",
+    excerpt: "Can Bitcoin survive a quantum attack? Developers are racing to implement quantum-resistant signatures.",
+    content: "Full content here...",
+    category: "Blockchain",
+    author: {
+      name: "David Kim",
+      role: "FinTech Reporter",
+      avatar: "https://picsum.photos/seed/david/100/100"
+    },
+    publishedAt: "2026-02-04T15:10:00Z",
+    readTime: "7 min read",
+    image: "https://picsum.photos/seed/quantum-crypto/1200/800",
+    tags: ["Blockchain", "Quantum", "Security"],
+    views: 3456
+  },
+  {
+    id: '24',
+    title: "The CISO's Nightmare: Deepfake CEO Fraud",
+    excerpt: "A Hong Kong firm lost $25M to a deepfake CFO call. How to verify identity in an age of perfect synthetic media.",
+    content: "Full content here...",
+    category: "Cybersecurity",
+    author: {
+      name: "Alex V",
+      role: "Security Analyst",
+      avatar: "https://picsum.photos/seed/alex/100/100"
+    },
+    publishedAt: "2026-02-03T11:00:00Z",
+    readTime: "5 min read",
+    image: "https://picsum.photos/seed/deepfake/1200/800",
+    tags: ["Security", "Deepfakes", "Fraud"],
+    views: 11234
+  },
+  {
+    id: '25',
+    title: "Kubernetes at the Edge: Managing 10,000 Clusters",
+    excerpt: "Retailers and factories are deploying K8s to the edge. Here is how they handle the operational overhead.",
+    content: "Full content here...",
+    category: "Cloud",
+    author: {
+      name: "Sarah Jenkins",
+      role: "Cloud Architect",
+      avatar: "https://picsum.photos/seed/sarah/100/100"
+    },
+    publishedAt: "2026-02-02T10:30:00Z",
+    readTime: "6 min read",
+    image: "https://picsum.photos/seed/k8s/1200/800",
+    tags: ["Cloud", "Kubernetes", "Edge Computing"],
+    views: 5678
+  },
+  {
+    id: '26',
+    title: "AI Model Collapse: What Happens When AI Trains on AI Data?",
+    excerpt: "Researchers warn of 'model collapse' as the web fills with synthetic text. We need human data more than ever.",
+    content: "Full content here...",
+    category: "AI & ML",
+    author: {
+      name: "Marcus Chen",
+      role: "AI Strategy Lead",
+      avatar: "https://picsum.photos/seed/marcus/100/100"
+    },
+    publishedAt: "2026-02-01T14:00:00Z",
+    readTime: "9 min read",
+    image: "https://picsum.photos/seed/model-collapse/1200/800",
+    tags: ["AI", "Research", "Data"],
+    views: 8765
   }
 ];
