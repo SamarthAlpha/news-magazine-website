@@ -74,9 +74,9 @@ export function Home() {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 scrollbar-hide snap-x snap-mandatory">
           {techArticles.map(article => (
-            <div key={article.id} className="group">
+            <div key={article.id} className="group min-w-[280px] md:min-w-0 snap-center">
               <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-zinc-100 relative">
                 <img 
                   src={article.image} 

@@ -6,11 +6,34 @@ import { Article } from '@/data/news';
 
 interface NewsCardProps {
   article: Article;
-  variant?: 'featured' | 'standard' | 'compact' | 'minimal';
+  variant?: 'featured' | 'standard' | 'compact' | 'minimal' | 'mobile-carousel';
   className?: string;
 }
 
 export const NewsCard: React.FC<NewsCardProps> = ({ article, variant = 'standard', className }) => {
+  if (variant === 'mobile-carousel') {
+    return (
+      <Link to={`/news/${article.id}`} className={cn("group block w-[280px] flex-shrink-0 snap-center", className)}>
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-xl mb-3 bg-zinc-100 relative">
+          <img 
+            src={article.image} 
+            alt={article.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md">
+            {article.category}
+          </span>
+        </div>
+        <h3 className="text-lg font-serif font-bold text-zinc-900 leading-tight mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+          {article.title}
+        </h3>
+        <p className="text-sm text-zinc-500 line-clamp-2">
+          {article.excerpt}
+        </p>
+      </Link>
+    );
+  }
+
   if (variant === 'featured') {
     return (
       <Link to={`/news/${article.id}`} className={cn("group block relative overflow-hidden rounded-2xl", className)}>

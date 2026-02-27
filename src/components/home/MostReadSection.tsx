@@ -57,7 +57,7 @@ export function MostReadSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="flex overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-8 scrollbar-hide snap-x snap-mandatory">
         <AnimatePresence mode='wait'>
           {topArticles.map((article, idx) => (
             <motion.div
@@ -66,6 +66,7 @@ export function MostReadSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
+              className="min-w-[280px] md:min-w-0 snap-center"
             >
               <Link to={`/news/${article.id}`} className="group block h-full flex flex-col">
                 <div className="relative aspect-[3/2] overflow-hidden rounded-xl mb-4 bg-zinc-100">
