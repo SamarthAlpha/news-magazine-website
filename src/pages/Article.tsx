@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { ARTICLES } from '@/data/news';
 import { 
   Clock, Calendar, Share2, ThumbsUp, ThumbsDown, 
-  Facebook, Twitter, Linkedin, Instagram, MessageCircle, Send 
+  Facebook, Twitter, Linkedin, Instagram, MessageCircle, Send,
+  Copy, Check
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
@@ -14,6 +15,7 @@ export function ArticlePage() {
   const [likes, setLikes] = useState(124);
   const [dislikes, setDislikes] = useState(12);
   const [userAction, setUserAction] = useState<'like' | 'dislike' | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const handleLike = () => {
     if (userAction === 'like') {
@@ -35,6 +37,12 @@ export function ArticlePage() {
       setDislikes(d => d + 1);
       setUserAction('dislike');
     }
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -137,20 +145,55 @@ export function ArticlePage() {
             {/* Share */}
             <div className="flex items-center space-x-3">
               <span className="text-sm font-bold text-zinc-400 uppercase tracking-widest mr-2">Share</span>
-              <button className="p-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors">
+              
+              <button 
+                className="p-2.5 rounded-full bg-[#25D366] text-white hover:bg-[#128C7E] transition-colors shadow-sm hover:shadow-md"
+                title="Share on WhatsApp"
+              >
                 <MessageCircle className="w-4 h-4" />
               </button>
-              <button className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors">
-                <Send className="w-4 h-4" /> {/* Telegram-ish */}
+              
+              <button 
+                className="p-2.5 rounded-full bg-[#0088cc] text-white hover:bg-[#007db1] transition-colors shadow-sm hover:shadow-md"
+                title="Share on Telegram"
+              >
+                <Send className="w-4 h-4" />
               </button>
-              <button className="p-2 rounded-full bg-black text-white hover:bg-zinc-800 transition-colors">
-                <Twitter className="w-4 h-4" /> {/* X */}
+              
+              <button 
+                className="p-2.5 rounded-full bg-black text-white hover:bg-zinc-800 transition-colors shadow-sm hover:shadow-md"
+                title="Share on X"
+              >
+                <Twitter className="w-4 h-4" />
               </button>
-              <button className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+              
+              <button 
+                className="p-2.5 rounded-full bg-[#1877F2] text-white hover:bg-[#166fe5] transition-colors shadow-sm hover:shadow-md"
+                title="Share on Facebook"
+              >
                 <Facebook className="w-4 h-4" />
               </button>
-              <button className="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-colors">
+              
+              <button 
+                className="p-2.5 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:opacity-90 transition-opacity shadow-sm hover:shadow-md"
+                title="Share on Instagram"
+              >
                 <Instagram className="w-4 h-4" />
+              </button>
+
+              <div className="w-px h-6 bg-zinc-200 mx-2" />
+
+              <button 
+                onClick={handleCopyLink}
+                className={cn(
+                  "flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
+                  copied 
+                    ? "bg-emerald-100 text-emerald-700 border border-emerald-200" 
+                    : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 border border-transparent"
+                )}
+              >
+                {copied ? <Check className="w-3 h-3 mr-1" /> : <Copy className="w-3 h-3 mr-1" />}
+                {copied ? 'Copied' : 'Copy Link'}
               </button>
             </div>
           </div>
