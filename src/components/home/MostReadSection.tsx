@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Eye, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
+import { ResponsiveCarousel } from '@/components/ui/ResponsiveCarousel';
 
 type TimePeriod = 'day' | 'week' | 'month';
 
@@ -57,7 +58,7 @@ export function MostReadSection() {
         </div>
       </div>
 
-      <div className="flex overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-8 scrollbar-hide snap-x snap-mandatory">
+      <ResponsiveCarousel gridClasses="md:grid-cols-3 gap-8">
         <AnimatePresence mode='wait'>
           {topArticles.map((article, idx) => (
             <motion.div
@@ -99,7 +100,7 @@ export function MostReadSection() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
+      </ResponsiveCarousel>
     </section>
   );
 }

@@ -4,6 +4,7 @@ import { NewsCard } from '@/components/ui/NewsCard';
 import { ArrowRight, TrendingUp, Zap, Shield, Cpu, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MostReadSection } from '@/components/home/MostReadSection';
+import { ResponsiveCarousel } from '@/components/ui/ResponsiveCarousel';
 
 export function Home() {
   const featuredArticle = ARTICLES.find(a => a.featured) || ARTICLES[0];
@@ -74,7 +75,7 @@ export function Home() {
           </Link>
         </div>
         
-        <div className="flex overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 scrollbar-hide snap-x snap-mandatory">
+        <ResponsiveCarousel gridClasses="md:grid-cols-2 lg:grid-cols-4">
           {techArticles.map(article => (
             <div key={article.id} className="group min-w-[280px] md:min-w-0 snap-center">
               <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-zinc-100 relative">
@@ -95,7 +96,7 @@ export function Home() {
               <p className="text-sm text-zinc-500 line-clamp-2">{article.excerpt}</p>
             </div>
           ))}
-        </div>
+        </ResponsiveCarousel>
       </section>
 
       {/* Executive Brief (Analysis) - Dark Section */}
