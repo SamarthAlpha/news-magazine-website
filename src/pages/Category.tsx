@@ -1,9 +1,12 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { ARTICLES } from '@/data/news';
 import { NewsCard } from '@/components/ui/NewsCard';
 import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const ITEMS_PER_PAGE = 9;
 
 const CATEGORY_THEMES: Record<string, {
   headerBg: string;
@@ -65,6 +68,9 @@ const CATEGORY_THEMES: Record<string, {
 
 export function CategoryPage() {
   const { category } = useParams<{ category: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = parseInt(searchParams.get('page') || '1');
+  
   const normalizedCategory = category?.toLowerCase() || 'default';
   
   // Map URL param to theme key (simple mapping for demo)
@@ -72,11 +78,22 @@ export function CategoryPage() {
   const theme = CATEGORY_THEMES[themeKey];
 
   // Filter articles (mock logic)
-  const categoryArticles = ARTICLES.filter(a => 
+  const allCategoryArticles = ARTICLES.filter(a => 
     normalizedCategory === 'trending' ? a.trending : 
     a.category.toLowerCase().includes(normalizedCategory.replace('-', ' ')) || 
     normalizedCategory === 'news' // Show all for /news
   );
+
+  const totalPages = Math.ceil(allCategoryArticles.length / ITEMS_PER_PAGE);
+  const paginatedArticles = allCategoryArticles.slice(
+    (page - 1) * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    setSearchParams({ page: newPage.toString() });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen pb-20">
@@ -114,31 +131,71 @@ export function CategoryPage() {
 
       {/* Content */}
       <div className="container mx-auto px-6 max-w-7xl">
-        {categoryArticles.length === 0 ? (
+        {paginatedArticles.length === 0 ? (
           <div className="text-center py-20">
             <h3 className="text-xl font-serif text-zinc-500">No articles found in this category.</h3>
           </div>
         ) : (
-          <div className={cn(
-            "grid gap-x-8 gap-y-12",
-            theme.layout === 'grid' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" :
-            theme.layout === 'list' ? "grid-cols-1 max-w-4xl mx-auto" :
-            "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" // Fallback for masonry
-          )}>
-            {categoryArticles.map((article, idx) => (
-              <motion.div
-                key={article.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <NewsCard 
-                  article={article} 
-                  variant={theme.layout === 'list' ? 'minimal' : 'standard'} 
-                />
-              </motion.div>
-            ))}
-          </div>
+          <>
+            <div className={cn(
+              "grid gap-x-8 gap-y-12 mb-16",
+              theme.layout === 'grid' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" :
+              theme.layout === 'list' ? "grid-cols-1 max-w-4xl mx-auto" :
+              "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" // Fallback for masonry
+            )}>
+              {paginatedArticles.map((article, idx) => (
+                <motion.div
+                  key={article.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <NewsCard 
+                    article={article} 
+                    variant={theme.layout === 'list' ? 'minimal' : 'standard'} 
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center space-x-4">
+                <button
+                  onClick={() => handlePageChange(page - 1)}
+                  disabled={page === 1}
+                  className="p-2 rounded-full border border-zinc-200 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <div className="flex items-center space-x-2">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => handlePageChange(p)}
+                      className={cn(
+                        "w-10 h-10 rounded-full text-sm font-bold transition-colors",
+                        page === p 
+                          ? "bg-black text-white" 
+                          : "text-zinc-500 hover:bg-zinc-100"
+                      )}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => handlePageChange(page + 1)}
+                  disabled={page === totalPages}
+                  className="p-2 rounded-full border border-zinc-200 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
