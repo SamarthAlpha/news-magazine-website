@@ -11,7 +11,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="block mb-6">
               <h2 className="font-serif text-3xl font-bold text-white tracking-tighter">
-                EXECUTECH.
+                CIO TECH WORLD.
               </h2>
             </Link>
             <p className="text-sm leading-relaxed mb-6 text-zinc-500">
@@ -78,7 +78,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-600">
-          <p>&copy; {new Date().getFullYear()} ExecuTech Insight. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CIO Tech World. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/sitemap" className="hover:text-zinc-400">Sitemap</Link>
             <Link to="/accessibility" className="hover:text-zinc-400">Accessibility</Link>

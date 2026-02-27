@@ -35,7 +35,7 @@ export function Home() {
             {/* Ad / Promo Placeholder */}
             <div className="bg-zinc-100 rounded-xl p-6 text-center mt-auto">
               <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Advertisement</p>
-              <h4 className="font-serif font-bold text-lg mb-4">ExecuTech Summit 2026</h4>
+              <h4 className="font-serif font-bold text-lg mb-4">CIO Tech World Summit 2026</h4>
               <button className="bg-black text-white text-xs font-bold uppercase px-4 py-2 rounded-full">
                 Get Tickets
               </button>
@@ -168,7 +168,7 @@ export function Home() {
             <div className="bg-zinc-50 p-8 rounded-2xl border border-zinc-100">
               <h3 className="font-serif text-xl font-bold mb-2">The Daily Brief</h3>
               <p className="text-zinc-500 text-sm mb-6">
-                Join 50,000+ leaders who start their day with ExecuTech.
+                Join 50,000+ leaders who start their day with CIO Tech World.
               </p>
               <input 
                 type="email" 

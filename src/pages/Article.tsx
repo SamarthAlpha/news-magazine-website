@@ -64,6 +64,19 @@ export function ArticlePage() {
           {article.excerpt}
         </p>
         
+        {/* Tags */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {article.tags.map(tag => (
+            <Link 
+              key={tag} 
+              to={`/search?q=${encodeURIComponent(tag)}`}
+              className="px-3 py-1 bg-zinc-50 border border-zinc-200 rounded-full text-xs font-medium text-zinc-600 hover:bg-black hover:text-white hover:border-black transition-colors"
+            >
+              #{tag}
+            </Link>
+          ))}
+        </div>
+        
         <div className="flex items-center justify-center space-x-8 text-sm text-zinc-500 border-y border-zinc-100 py-6">
           <div className="flex items-center space-x-3">
             <img src={article.author.avatar} alt={article.author.name} className="w-10 h-10 rounded-full" />
@@ -96,7 +109,7 @@ export function ArticlePage() {
           />
         </div>
         <p className="text-center text-xs text-zinc-400 mt-4 italic">
-          Image source: Unsplash / ExecuTech Visuals
+          Image source: Unsplash / CIO Tech World Visuals
         </p>
       </div>
 
@@ -205,7 +218,7 @@ export function ArticlePage() {
           <div>
             <h3 className="font-serif text-lg font-bold text-zinc-900 mb-2">About {article.author.name}</h3>
             <p className="text-zinc-600 text-sm leading-relaxed mb-4">
-              {article.author.role} at ExecuTech. Specializing in enterprise architecture and digital transformation strategies.
+              {article.author.role} at CIO Tech World. Specializing in enterprise architecture and digital transformation strategies.
               Previously served as CTO for a Fortune 500 logistics firm.
             </p>
             <button className="text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-0.5 hover:opacity-70">

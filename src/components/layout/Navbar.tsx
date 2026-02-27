@@ -93,7 +93,7 @@ export function Navbar() {
             {/* Logo */}
             <Link to="/" className="relative z-50 group">
               <h1 className="font-serif text-2xl md:text-3xl font-bold tracking-tighter text-zinc-900 group-hover:opacity-80 transition-opacity">
-                EXECUTECH<span className="text-zinc-400">.</span>
+                CIO TECH WORLD<span className="text-zinc-400">.</span>
               </h1>
             </Link>
 
